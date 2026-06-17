@@ -1,0 +1,27 @@
+% ============================================================
+% 字体配置文件
+% 使用 XeLaTeX 引擎，通过 fontspec 设置中英文字体
+% ============================================================
+\usepackage{fontspec}
+\usepackage{xeCJK}
+% ---------- 英文字体（衬线 / 无衬线 / 等宽） ----------
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Courier New}
+
+% ---------- 中文字体（ctex 默认字体集） ----------
+% ctexart 自动加载中文字体，无需额外设置
+% 如需自定义，取消下面的注释并修改字体名：
+% \setCJKsansfont{SimHei}
+% \setCJKmonofont{FangSong}
+% ===== 中文正文（默认）=====
+\setCJKmainfont{SimSun}[BoldFont=SimHei, ItalicFont=KaiTi]
+%中文字库通常没有独立的“粗体”或“斜体”字形文件，所以这里通过 BoldFont 和 ItalicFont 参数指定了映射关系
+
+% ===== 中文无衬线（标题）=====
+\setCJKsansfont{SimHei}
+
+% ---------- 数学字体 ----------
+% 如需自定义数学字体，需先在 packages.tex 中加载 unicode-math 宏包，
+% 然后取消下面的注释：
+% \setmathfont{Latin Modern Math}

@@ -1,0 +1,54 @@
+% 封面设置。
+% 封面分为 5 大块：
+%   1. 校徽
+%   2. 标题行（"研究生<课程名>（课程小论文）"）
+%   3. 论文题目 & 得分
+%   4. 信息表格（学院/专业/班级/学号/任课教师/学生姓名/提交日期）
+%   5. 底部留白（\vfill 将内容推向上方）
+
+\newcommand{\makecoursetitle}{%
+  \begin{titlepage}
+    \centering
+    % ---------- 第 1 块：校徽 ----------
+    \includegraphics[width=0.66\textwidth]{figures/logo/ningbo-university-logo.png}\\
+    \vspace*{1.5cm}
+    % ---------- 第 2 块：标题行 ----------
+    {\zihao{2}\kaishu 研究生\coursename（课程小论文）\par}
+    \vspace*{1.5cm}
+    % ---------- 第 3 块：题目 & 得分 ----------
+    {\zihao{2}\heiti 题目：\underline{\makebox[12em][c]{\papertitle}}\par}
+    \vspace*{1cm}
+    {\zihao{2}\heiti 得分：\underline{\makebox[12em][c]{}}\par}
+    \vspace{2cm}
+   % {\zihao{4}\papersubtitle\par}  % 副标题（当前未启用）
+    %\vfill
+    % ---------- 第 4 块：信息表格 ----------
+    \songti\zihao{4}
+    \begin{tabular*}{0.45\textwidth}{@{}>{\heiti}l@{\extracolsep{\fill}}l@{}}
+      \makebox[4em][s]{学院} & \underline{\makebox[10em][c]{\paperdepartment}} \\
+      \makebox[4em][s]{专业} & \underline{\makebox[10em][c]{\major}} \\
+      \makebox[4em][s]{班级} & \underline{\makebox[10em][c]{\class}} \\
+      \makebox[4em][s]{学号} & \underline{\makebox[10em][c]{\studentid}} \\
+      \makebox[4em][s]{任课教师} & \underline{\makebox[10em][c]{\teachername}} \\
+      \makebox[4em][s]{学生姓名} & \underline{\makebox[10em][c]{\paperauthor}} \\
+      \makebox[4em][s]{提交日期} & \underline{\makebox[10em][c]{\submitdate}} \\
+    \end{tabular*}
+    \vfill  % ---------- 第 5 块：底部留白 ----------
+    %{\schoolname\par}  % 学校名称（当前未启用）
+  \end{titlepage}
+}
+
+% 第 4 块语法说明：
+%   tabular*{width}{preamble}  — 指定总宽度的表格，列间自动拉开填满 width
+%   @{}                        — 抑制该位置列间距
+%   >{\bfseries}l              — 该列内容自动加粗、左对齐
+%   @{\extracolsep{\fill}}     — 列间插入可无限拉伸的空白，使表格撑满总宽
+%   \makebox[width][pos]{text} — 固定宽度的盒子，pos: l=左, s=两端分散对齐
+%   \underline{\makebox[10em][c]{...}} — 固定宽度 10em 的下划线占位框，c=居中
+
+% 第 3 块语法说明：
+%   \zihao{2}    — ctex 字号命令，二号字
+%   \heiti       — 黑体标题字形
+%   \par         — 强制断行（\bfseries 等声明类命令后需 \par 才能生效）
+%   \vspace*{len} — 插入指定长度的垂直空白，带 * 表示在页面顶部也保留
+%   \papertitle  — 自定义命令，存储论文题目

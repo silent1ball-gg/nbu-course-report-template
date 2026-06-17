@@ -1,0 +1,43 @@
+% ============================================================
+% 格式配置文件
+% 包含：参考文献源、图片路径、超链接样式、段落排版、
+%        图表标题、单位格式、自定义命令
+% ============================================================
+
+% ---------- 参考文献源 ----------
+\addbibresource{references.bib}
+
+% ---------- 图片路径 ----------
+\graphicspath{{figures/final/}}
+
+% ---------- 超链接样式 ----------
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  citecolor=blue!50!black,
+  urlcolor=blue!50!black,
+  pdftitle={\papertitle},
+  pdfauthor={\paperauthor}
+}
+
+% ---------- 段落排版 ----------
+\setstretch{1.25}             % 1.25 倍行距
+\setlength{\parindent}{2em}   % 首行缩进 2 汉字宽
+\setlength{\parskip}{0.3em}   % 段间距 0.3em
+
+% ---------- 图表标题 ----------
+\captionsetup{
+  font=small,                 % 小号字体
+  labelfont=bf                % 标签加粗
+}
+
+% ---------- 单位格式 ----------
+\sisetup{
+  detect-all,                 % 自动匹配上下文字体
+  separate-uncertainty=true   % 分离不确定度
+}
+
+% ---------- 自定义命令 ----------
+\newcommand{\keywords}[1]{%
+  \par\vspace{0.5em}\noindent\textbf{关键词：}#1
+}
