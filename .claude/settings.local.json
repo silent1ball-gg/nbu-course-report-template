@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tlmgr install *)",
+      "PowerShell(Get-Command *)",
+      "PowerShell(& \"D:\\\\latex\\\\texlive\\\\2024\\\\bin\\\\windows\\\\tlmgr.bat\" install biblatex-gb7714-2015)"
+    ]
+  }
+}

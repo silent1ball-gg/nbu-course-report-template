@@ -1,0 +1,68 @@
+% ============================================================
+% 参考文献配置
+% 包含：biblatex 宏包设置、参考文献源文件
+% ============================================================
+
+% ---------- biblatex 宏包 ----------
+\usepackage[
+  backend=biber,
+  style=numeric,
+  sorting=none,
+  maxbibnames=99
+]{biblatex}
+
+\DeclareFieldFormat{pages}{#1}   % 去掉 pages 字段的 "pp." 前缀
+
+% ---------- GB/T 7714-2015 参考文献格式驱动 ----------
+% 语法速览：
+%   \printnames{author}     → 输出作者名
+%   \printfield{title}      → 输出标题字段
+%   \printlist{location}    → 输出出版地（可能有多个）
+%   \setunit{...}           → 设置与下一项之间的分隔符（仅当前项非空时生效）
+%   \newunit\newblock       → 换块分隔（块内有效项间逗号，块间句点）
+%   \finentry               → 收尾（补上末尾的句号）
+%   \iffieldundef{...}      → 条件判断：某字段是否为空
+
+% ---------- 专著 @book → 输出  作者. 书名 [M]. 出版地: 出版社, 年. ----------
+\DeclareBibliographyDriver{book}{%
+  %\printtext[brackets]{\printfield{labelnumber}}%  序号由 numeric 样式外层统一输出，driver 内无需重复
+  \setunit{\addperiod\space}%
+  \printnames{author}%
+  \setunit{\addperiod\space}%
+  \printfield{title}%
+  \setunit{\addspace}%
+  \printtext{[M]}%                                  文献类型标识
+  \newunit\newblock
+  \printlist{location}%
+  \setunit{\addcolon\space}%
+  \printlist{publisher}%
+  \setunit{\addcomma\space}%
+  \printfield{year}%
+  \setunit{\addperiod}%
+  \finentry
+}
+
+% ---------- 期刊论文 @article → 输出 [2] 作者. 题名 [J]. 刊名, 年, 卷(期): 页码. ----------
+\DeclareBibliographyDriver{article}{%
+  %\printtext[brackets]{\printfield{labelnumber}}%  序号由 numeric 样式外层统一输出，driver 内无需重复
+  \setunit{\addperiod\space}%
+  \printnames{author}%
+  \setunit{\addperiod\space}%
+  \printfield{title}%
+  \setunit{\addspace}%
+  \printtext{[J]}%                                  文献类型标识
+  \newunit\newblock
+  \printfield{journaltitle}%
+  \setunit{\addcomma\space}%
+  \printfield{year}%
+  \setunit{\addcomma\space}%
+  \printfield{volume}%
+  \iffieldundef{number}{}{\printtext{(\printfield{number})}}%  有期号才输出 (n)
+  \setunit{\addcolon}%
+  \printfield{pages}%
+  \setunit{\addperiod}%
+  \finentry
+}
+
+% ---------- 参考文献源 ----------
+\addbibresource{references.bib}
