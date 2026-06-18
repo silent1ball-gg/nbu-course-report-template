@@ -1,7 +1,6 @@
 % ============================================================
-% 字体配置文件
+% 字体配置文件 (macOS)
 % 使用 XeLaTeX 引擎，通过 fontspec 设置中英文字体
-% 自动检测 Windows / macOS 平台，无需手动切换
 % ============================================================
 \usepackage{fontspec}
 \usepackage{xeCJK}
@@ -11,22 +10,19 @@
 \setsansfont{Arial}
 \setmonofont{Courier New}
 
-% ---------- 中文字体（自动检测平台） ----------
-\IfFontExistsTF{SimSun}{
-  % ===== Windows =====
-  \setCJKmainfont{SimSun}[BoldFont=SimHei, ItalicFont=KaiTi]
-  \setCJKsansfont{SimHei}
-  \setCJKmonofont{FangSong}
-}{
-  % ===== macOS =====
-  \setCJKmainfont{Songti SC}[
-    BoldFont       = Heiti SC,
-    ItalicFont     = Kaiti SC,
-    BoldItalicFont = Heiti SC
-  ]
-  \setCJKsansfont{Heiti SC}
-  \setCJKmonofont{STFangsong}
-}
+% ---------- 中文字体 ----------
+% ===== 中文正文（宋体）=====
+\setCJKmainfont{Songti SC}[
+  BoldFont       = Heiti SC,
+  ItalicFont     = Kaiti SC,
+  BoldItalicFont = Heiti SC
+]
+
+% ===== 中文无衬线（黑体，标题）=====
+\setCJKsansfont{Heiti SC}
+
+% ===== 中文等宽 =====
+\setCJKmonofont{STFangsong}
 
 % ---------- 数学字体 ----------
 % 如需自定义数学字体，需先在 packages.tex 中加载 unicode-math 宏包，
