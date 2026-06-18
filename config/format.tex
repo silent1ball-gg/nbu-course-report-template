@@ -18,6 +18,13 @@
 }
 
 % ---------- 段落排版 ----------
+% ---------- 页眉页脚 ----------
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.4pt}   % 页眉分割线粗细
+\fancyhead{}                          % 清空全部默认页眉
+\fancyhead[CO]{\coursename}            % 奇数页页眉居中：课程名
+\fancyhead[CE]{\papertitle}            % 偶数页页眉居中：论文名
+\fancyfoot[C]{\thepage}                % 页码底部居中
 \setstretch{1.25}             % 1.25 倍行距
 \setlength{\parindent}{2em}   % 首行缩进 2 汉字宽
 \setlength{\parskip}{0.3em}   % 段间距 0.3em
